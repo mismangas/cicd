@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mismangas-cicd
+spec:
+  destination:
+    namespace: mismangas-cicd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cicd
+    repoURL: https://github.com/mismangas/cicd.git
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

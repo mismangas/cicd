@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: mismangas-cicd
+
+resources:
+- resources/applications.yaml
+- resources/pipelineresources.yaml
+- resources/secret.yaml
+- resources/serviceaccount.yaml
+- tasks/s2i-nodejs-pr.yaml

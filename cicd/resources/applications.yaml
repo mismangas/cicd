@@ -1,0 +1,20 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mismangas-dev
+spec:
+  destination:
+    namespace: mismangas-dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cicd
+    repoURL: https://github.com/mismangas/apigw.git
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
